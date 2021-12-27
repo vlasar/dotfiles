@@ -15,6 +15,7 @@ local plugins = {
   'lsp',
   'lualine',
   'neoscroll',
+  'notify',
   'pasta',
   'splitjoin',
   'startuptime',
