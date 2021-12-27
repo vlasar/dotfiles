@@ -1,0 +1,54 @@
+[user]
+	name     = Vladimir Sarić
+	email    = vladimir@vladimirsaric.com
+	username = vlasar
+[core]
+	editor = nvim
+	pager  = delta --dark
+[diff]
+  colorMoved = default
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow bold
+	local   = green bold
+	remote  = cyan bold
+[color "diff"]
+	meta       = yellow bold
+	frag       = magenta bold
+	old        = red bold
+	new        = green bold
+	whitespace = red reverse
+[color "status"]
+	added     = yellow
+	changed   = green
+	untracked = blue
+[alias]
+  b  = branch
+  cm = commit
+  co = checkout
+  d  = diff
+  s  = status
+  purge = !git checkout master && git pull && git remote prune origin && git branch --merged | grep -v "master" | xargs git branch -D
+  undo = reset HEAD~
+[delta]
+  features                  = decorations
+  line-numbers              = true
+  line-numbers-left-format  = ""
+  line-numbers-right-format = "│ "
+[delta "interactive"]
+  keep-plus-minus-markers = false
+[delta "decorations"]
+  commit-decoration-style       = blue ol
+  commit-style                  = raw
+  file-style                    = omit
+  hunk-header-decoration-style  = blue box
+  hunk-header-file-style        = red
+  hunk-header-line-number-style = "#067a00"
+  hunk-header-style             = file line-number syntax
+[pull]
+	ff = only
+[http]
+	postBuffer = 5242880
