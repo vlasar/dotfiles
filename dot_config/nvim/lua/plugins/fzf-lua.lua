@@ -5,8 +5,9 @@ local plugin = {
   config = function()
     require('fzf-lua').setup({
       files = {
-        git_icons  = false,
         file_icons = false,
+        git_icons  = false,
+        previewer  = false,
       }
     })
   end
