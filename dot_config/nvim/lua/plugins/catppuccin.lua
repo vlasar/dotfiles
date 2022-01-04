@@ -3,6 +3,7 @@ local plugin = {
   as     = 'catppuccin',
   config = function()
     local catppuccin = require("catppuccin")
+    local colors = require("catppuccin.api.colors").get_colors()
 
     catppuccin.setup({
       styles = {
@@ -56,6 +57,7 @@ local plugin = {
         cmp = true,
       }
     })
+    catppuccin.remap({ ColorColumn = { bg = colors.black3 } })
 
     vim.cmd[[colorscheme catppuccin]]
   end
