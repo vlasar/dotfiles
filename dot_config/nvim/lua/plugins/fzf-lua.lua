@@ -4,6 +4,9 @@ local plugin = {
   module = 'fzf-lua',
   config = function()
     require('fzf-lua').setup({
+      buffers = {
+        previewer  = false,
+      },
       files = {
         file_icons = false,
         git_icons  = false,
