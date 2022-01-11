@@ -5,12 +5,13 @@ plugin = {
   requires = {
     {
       'neovim/nvim-lspconfig',
-      ft = {'ruby'}
+      --ft = {'ruby'}
     }
   },
-  after = {'nvim-lspconfig'},
+  --after = {'nvim-lspconfig'},
   config = function()
     local null_ls = require("null-ls")
+    local nvim_lsp = require("lspconfig")
 
     null_ls.setup({
       sources = {
@@ -53,6 +54,29 @@ plugin = {
       opts = opts or {}
       opts.border = opts.border or border
       return orig_util_open_floating_preview(contents, syntax, opts, ...)
+    end
+
+    local on_attach = function(client, bufnr)
+      local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+      local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+        -- Mappings.
+      local opts = { noremap=true, silent=true }
+
+      -- See `:help vim.lsp.*` for documentation on any of the below functions
+      buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+      buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+      buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    end
+
+    local servers = {'solargraph'}
+    for _, lsp in ipairs(servers) do
+      nvim_lsp[lsp].setup {
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150,
+        }
+      }
     end
   end
 }

@@ -3,6 +3,7 @@ local plugin = {
   requires = {
     {'L3MON4D3/LuaSnip', after = 'friendly-snippets', event = {'InsertEnter'}},
     {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
     {'rafamadriz/friendly-snippets'},
     {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
   },
@@ -17,13 +18,25 @@ local plugin = {
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
 
-    require('luasnip').filetype_extend("ruby", {"rails"})
+    luasnip.filetype_extend("ruby", {"rails"})
 
     cmp.setup({
       snippet = {
         expand = function(args)
-          require('luasnip').lsp_expand(args.body)
+          luasnip.lsp_expand(args.body)
         end,
+      },
+      formatting = {
+        format = function(entry, vim_item)
+          vim_item.menu = ({
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[LaTeX]",
+          })[entry.source.name]
+          return vim_item
+        end
       },
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
@@ -59,13 +72,22 @@ local plugin = {
               return vim.api.nvim_list_bufs()
             end
           }
-        }
+        },
+        {
+          name = 'nvim_lsp'
+        },
       }),
     })
 
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 
     require('luasnip.loaders.from_vscode').load()
+
+    -- Setup lspconfig.
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    require('lspconfig')['solargraph'].setup {
+      capabilities = capabilities
+    }
   end
 }
 
