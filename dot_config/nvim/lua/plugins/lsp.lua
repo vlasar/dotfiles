@@ -69,7 +69,7 @@ plugin = {
       buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
     end
 
-    local servers = {'solargraph'}
+    local servers = {'solargraph', 'tsserver'}
     for _, lsp in ipairs(servers) do
       nvim_lsp[lsp].setup {
         on_attach = on_attach,
