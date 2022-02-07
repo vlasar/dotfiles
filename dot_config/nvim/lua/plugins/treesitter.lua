@@ -1,6 +1,7 @@
 local plugin = {
   name     = 'nvim-treesitter/nvim-treesitter',
   requires = {
+    'RRethy/nvim-treesitter-endwise',
     'mfussenegger/nvim-ts-hint-textobject',
     'nvim-treesitter/nvim-treesitter-refactor',
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -30,6 +31,9 @@ local plugin = {
       rainbow = {
         enable = true,
         extended_mode = true,
+      },
+      endwise = {
+        enable = true,
       },
       textobjects = {
         select = {
