@@ -17,6 +17,7 @@ local plugins = {
   'neoscroll',
   'notify',
   'pasta',
+  'picker',
   'splitjoin',
   'startuptime',
   'surround',
