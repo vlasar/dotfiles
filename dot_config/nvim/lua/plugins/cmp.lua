@@ -3,7 +3,6 @@ local plugin = {
   requires = {
     {'L3MON4D3/LuaSnip', after = 'friendly-snippets', event = {'InsertEnter'}},
     {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
-    {'hrsh7th/cmp-nvim-lsp'},
     {'rafamadriz/friendly-snippets'},
     {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
   },
@@ -30,7 +29,6 @@ local plugin = {
         format = function(entry, vim_item)
           vim_item.menu = ({
             buffer = "[Buffer]",
-            nvim_lsp = "[LSP]",
             luasnip = "[LuaSnip]",
             nvim_lua = "[Lua]",
             latex_symbols = "[LaTeX]",
@@ -73,21 +71,12 @@ local plugin = {
             end
           }
         },
-        {
-          name = 'nvim_lsp'
-        },
       }),
     })
 
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 
     require('luasnip.loaders.from_vscode').load()
-
-    -- Setup lspconfig.
-    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    require('lspconfig')['solargraph'].setup {
-      capabilities = capabilities
-    }
   end
 }
 
