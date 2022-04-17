@@ -6,10 +6,8 @@ plugin = {
     {
       'neovim/nvim-lspconfig',
       'j-hui/fidget.nvim'
-      --ft = {'ruby'}
     }
   },
-  --after = {'nvim-lspconfig'},
   config = function()
     local null_ls = require("null-ls")
     local nvim_lsp = require("lspconfig")
