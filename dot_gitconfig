@@ -52,3 +52,5 @@
 	ff = only
 [http]
 	postBuffer = 5242880
+[push]
+	default = current
