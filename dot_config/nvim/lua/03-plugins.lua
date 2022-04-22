@@ -30,6 +30,7 @@ require('packer').startup(
     function()
       use 'kyazdani42/nvim-web-devicons'
       use 'nathom/filetype.nvim'
+      use 'tpope/vim-repeat'
       use 'wbthomason/packer.nvim'
 
       for _, p in ipairs(plugins) do
