@@ -32,6 +32,7 @@ o.expandtab     = true
 o.hlsearch      = true
 o.ignorecase    = true
 o.incsearch     = true
+o.laststatus    = 3
 o.mouse         = 'a'
 o.number        = true
 o.pumblend      = 0

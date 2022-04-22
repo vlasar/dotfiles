@@ -10,6 +10,7 @@ local plugin = {
         section_separators = {left = '', right = ''},
         disabled_filetypes = {},
         always_divide_middle = true,
+        globalstatus = true,
       },
       sections = {
         lualine_a = {'mode'},
