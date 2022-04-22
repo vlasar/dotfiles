@@ -10,6 +10,7 @@ local plugins = {
   'easy-align',
   'fzf-lua',
   'gitsigns',
+  'hlargs',
   'indent-blankline',
   'leap',
   'lsp',
