@@ -17,8 +17,6 @@ local plugin = {
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
     end
 
-    luasnip.filetype_extend("ruby", {"rails"})
-
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -30,14 +28,12 @@ local plugin = {
           vim_item.menu = ({
             buffer = "[Buffer]",
             luasnip = "[LuaSnip]",
-            nvim_lua = "[Lua]",
-            latex_symbols = "[LaTeX]",
           })[entry.source.name]
           return vim_item
         end
       },
       mapping = {
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = false }),
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -77,6 +73,8 @@ local plugin = {
     cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
 
     require('luasnip.loaders.from_vscode').load()
+
+    luasnip.filetype_extend("ruby", { "rails" })
   end
 }
 
