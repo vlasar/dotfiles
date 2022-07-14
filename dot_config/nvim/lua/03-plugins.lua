@@ -11,24 +11,25 @@ local plugins = {
   'fzf-lua',
   'gitsigns',
   'hlargs',
+  'hop',
   'indent-blankline',
-  'leap',
   'lsp',
   'lualine',
   'neoscroll',
   'notify',
   'pasta',
-  'picker',
   'splitjoin',
   'startuptime',
   'surround',
   'test',
   'treesitter',
+  'wilder',
 }
 
 require('packer').startup(
   {
     function()
+      use 'antoinemadec/FixCursorHold.nvim'
       use 'kyazdani42/nvim-web-devicons'
       use 'nathom/filetype.nvim'
       use 'tpope/vim-repeat'
@@ -41,6 +42,7 @@ require('packer').startup(
           plugin.name,
           after    = plugin.after,
           as       = plugin.as,
+          branch   = plugin.branch,
           cmd      = plugin.cmd,
           config   = plugin.config,
           event    = plugin.event,
@@ -61,3 +63,7 @@ require('packer').startup(
     }
   }
 )
+
+vim.cmd[[
+  nnoremap <leader>1 <cmd>PackerSync<CR>
+]]

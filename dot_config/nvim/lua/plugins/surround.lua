@@ -1,6 +1,8 @@
 local plugin = {
-  name = 'tpope/vim-surround',
-  requires = {'tpope/vim-repeat'},
+  name = 'kylechui/nvim-surround',
+  config = function()
+    require('nvim-surround').setup({})
+  end
 }
 
 return plugin

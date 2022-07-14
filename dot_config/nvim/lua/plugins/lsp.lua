@@ -4,14 +4,12 @@ plugin = {
   ft = {'ruby'},
   requires = {
     {
-      'neovim/nvim-lspconfig',
-      'j-hui/fidget.nvim'
+      'j-hui/fidget.nvim',
     }
   },
   config = function()
-    local null_ls = require("null-ls")
-    local nvim_lsp = require("lspconfig")
     local fidget = require("fidget")
+    local null_ls = require("null-ls")
 
     fidget.setup({})
 

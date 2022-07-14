@@ -18,6 +18,9 @@ local plugin = {
     end
 
     cmp.setup({
+      experimental = {
+        ghost_text = true
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -26,11 +29,15 @@ local plugin = {
       formatting = {
         format = function(entry, vim_item)
           vim_item.menu = ({
-            buffer = "[Buffer]",
-            luasnip = "[LuaSnip]",
+            buffer = "[B]",
+            luasnip = "[S]",
           })[entry.source.name]
           return vim_item
         end
+      },
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
       },
       mapping = {
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
@@ -56,9 +63,7 @@ local plugin = {
         end, { 'i', 's' }),
       },
       sources = cmp.config.sources({
-        {
-          name = 'luasnip'
-        },
+        { name = 'luasnip' },
         {
           name = 'buffer',
           option = {

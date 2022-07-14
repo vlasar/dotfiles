@@ -45,7 +45,7 @@ local plugin = {
             ["ac"] = "@class.outer",
             ["ic"] = "@class.inner",
           },
-        },
+        }
       },
     }
 
