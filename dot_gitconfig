@@ -4,7 +4,7 @@
 	username = vlasar
 [core]
 	editor = nvim
-	pager  = delta --light
+	pager  = delta
 [diff]
   colorMoved = default
 [interactive]
