@@ -2,9 +2,17 @@ plugin = {
   name = 'jose-elias-alvarez/null-ls.nvim',
   event = 'BufReadPre',
   ft = {'ruby'},
+  wants = {'fidget.nvim', 'plenary.nvim'},
   requires = {
     {
       'j-hui/fidget.nvim',
+      event = 'BufReadPre',
+      ft    = {'ruby'}
+    },
+    {
+      'nvim-lua/plenary.nvim',
+      event = 'BufReadPre',
+      ft    = {'ruby'}
     }
   },
   config = function()
@@ -16,7 +24,11 @@ plugin = {
     null_ls.setup({
       sources = {
         null_ls.builtins.code_actions.gitsigns,
-        null_ls.builtins.diagnostics.rubocop,
+        null_ls.builtins.diagnostics.erb_lint,
+        -- null_ls.builtins.diagnostics.rubocop,
+        null_ls.builtins.diagnostics.rubocop.with({
+          method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
+        }),
         null_ls.builtins.formatting.rubocop,
       }
     })

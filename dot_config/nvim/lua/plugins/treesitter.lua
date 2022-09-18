@@ -1,11 +1,13 @@
 local plugin = {
   name     = 'nvim-treesitter/nvim-treesitter',
+  event = 'BufRead',
+  -- wants = {'nvim-treesitter-endwise', 'nvim-ts-hint-textobject', 'nvim-treesitter-refactor', 'nvim-treesitter-textobject', 'nvim-ts-rainbow'},
   requires = {
-    'RRethy/nvim-treesitter-endwise',
-    'mfussenegger/nvim-ts-hint-textobject',
-    'nvim-treesitter/nvim-treesitter-refactor',
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    'p00f/nvim-ts-rainbow',
+    { 'RRethy/nvim-treesitter-endwise', after = 'nvim-treesitter' },
+    { 'mfussenegger/nvim-ts-hint-textobject', after = 'nvim-treesitter' },
+    { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
+    { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
+    { 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' }
   },
   run      = ':TSUpdate',
   config   = function()

@@ -1,12 +1,27 @@
 local plugin = {
-  name = 'hrsh7th/nvim-cmp',
+  name     = 'hrsh7th/nvim-cmp',
+  event    = 'InsertEnter',
+  wants    = {'LuaSnip', 'nvim-autopairs'},
+  after    = 'nvim-autopairs',
   requires = {
-    {'L3MON4D3/LuaSnip', after = 'friendly-snippets', event = {'InsertEnter'}},
-    {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
-    {'rafamadriz/friendly-snippets'},
-    {'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp'},
+    {
+      'hrsh7th/cmp-buffer',
+      after = 'nvim-cmp'
+    },
+    {
+      'saadparwaiz1/cmp_luasnip',
+      after = 'nvim-cmp'
+    },
+    {
+      'L3MON4D3/LuaSnip',
+      event = 'InsertCharPre',
+      wants = 'friendly-snippets'
+    },
+    {
+      'rafamadriz/friendly-snippets',
+      event = 'InsertCharPre'
+    },
   },
-  after = {'LuaSnip'},
   config = function()
     local cmp = require('cmp')
     local cmp_autopairs = require('nvim-autopairs.completion.cmp')

@@ -1,5 +1,5 @@
 plugin = {
-  name = 'rhysd/accelerated-jk',
+  name = 'rainbowhxch/accelerated-jk.nvim',
   keys = {'j', 'k'},
   config = function()
     vim.api.nvim_set_keymap('n', 'j', '<Plug>(accelerated_jk_gj)', {})

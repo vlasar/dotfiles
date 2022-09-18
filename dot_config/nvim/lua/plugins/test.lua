@@ -6,7 +6,7 @@ plugin = {
   },
   config = function()
     vim.cmd[[
-      let test#strategy = "neovim"
+      let test#strategy = "toggleterm"
     ]]
   end
 }

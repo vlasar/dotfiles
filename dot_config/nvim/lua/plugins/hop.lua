@@ -1,6 +1,7 @@
 local plugin = {
-  name = 'phaazon/hop.nvim',
+  name   = 'phaazon/hop.nvim',
   branch = 'v1',
+  cmd    = {'HopWord'},
   config = function()
     require'hop'.setup()
   end

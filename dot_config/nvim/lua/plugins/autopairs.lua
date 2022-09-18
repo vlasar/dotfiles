@@ -1,5 +1,6 @@
 local plugin = {
-  name = 'windwp/nvim-autopairs',
+  name   = 'windwp/nvim-autopairs',
+  event  = 'InsertEnter',
   config = function()
     require('nvim-autopairs').setup({})
   end

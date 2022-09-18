@@ -1,8 +1,14 @@
 local plugin = {
-  name = 'ibhagwan/fzf-lua',
-  requires = { 'kyazdani42/nvim-web-devicons' },
-  module = 'fzf-lua',
-  config = function()
+  name     = 'ibhagwan/fzf-lua',
+  module   = 'fzf-lua',
+  wants    = {'nvim-web-devicons'},
+  requires = {
+    {
+      'kyazdani42/nvim-web-devicons',
+      opt = true
+    }
+  },
+  config   = function()
     require('fzf-lua').setup({
       winopts = {
         height = 0.25,
@@ -15,6 +21,7 @@ local plugin = {
       },
       files = {
         file_icons = false,
+        previewer = false
       },
       grep = {
         previewer = false
