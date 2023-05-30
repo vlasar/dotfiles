@@ -5,6 +5,7 @@
 [core]
 	editor = nvim
 	pager  = delta
+	excludesFile = ~/.gitignore
 [diff]
   colorMoved = default
 [interactive]
@@ -38,6 +39,7 @@
   line-numbers              = true
   line-numbers-left-format  = ""
   line-numbers-right-format = "│ "
+  light                     = true
 [delta "interactive"]
   keep-plus-minus-markers = false
 [delta "decorations"]
@@ -54,3 +56,5 @@
 	postBuffer = 5242880
 [push]
 	default = current
+[credential]
+	helper = osxkeychain
